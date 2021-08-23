@@ -13,7 +13,9 @@ export default function TodoList() {
   useEffect(() => {
     const getTodos = async () => {
       if (apiStatus === 'idle') {
-        dispatch(fetchTodos());
+        const before = dispatch(fetchTodos());
+        console.log(before);
+        console.log(await before.unwrap());
       }
     };
 
