@@ -11,9 +11,13 @@ export default function TodoList() {
   const apiErrorMessage = useSelector(state => state.todos.error);
 
   useEffect(() => {
-    if (apiStatus === 'idle') {
-      dispatch(fetchTodos());
-    }
+    const getTodos = async () => {
+      if (apiStatus === 'idle') {
+        dispatch(fetchTodos());
+      }
+    };
+
+    getTodos();
   }, [apiStatus, dispatch]);
 
   const handleCheck = event => {
